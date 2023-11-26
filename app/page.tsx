@@ -1,9 +1,13 @@
-import Image from 'next/image'
+import React from 'react'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Last testing</h1>
-    </main>
+    <div className="w-full flex-center">
+        <h1 className="text-center">
+            Hello
+        </h1>
+    </div>
   )
 }
+
+export default Home
