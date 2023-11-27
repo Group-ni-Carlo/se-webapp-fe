@@ -4,7 +4,7 @@ const Home: React.FC = () => {
   return (
     <div className="w-full flex-center">
         <h1 className="text-center">
-            Hello
+            Hello what
         </h1>
     </div>
   )
