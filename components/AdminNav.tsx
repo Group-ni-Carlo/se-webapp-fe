@@ -28,15 +28,15 @@ const AdminNavBar: React.FC = () => {
                 </span>
             </div>
             <div className="flex flex-col mt-5 ml-10 w-full gap-y-4">
-                <Link href="/admins/announcement" className="flex flex-row gap-x-2">
+                <Link href="/admin/announcements" className="flex flex-row gap-x-2" onClick={() => setToggleMenu(!toggleMenu)}>
                     <Icon className="text-orange" path={mdiBullhorn} size={1} />
                     <h1>Announcements</h1>
                 </Link>
-                <Link href="/admins/merch" className="flex flex-row gap-x-2">
+                <Link href="/admin/merchandise" className="flex flex-row gap-x-2" onClick={() => setToggleMenu(!toggleMenu)}>
                     <Icon className="text-orange" path={mdiTshirtCrew} size={1} />
                     <h1>Merchandise</h1>
                 </Link>
-                <Link href="/admins/merch" className="flex flex-row gap-x-2">
+                <Link href="/admin/sponsors" className="flex flex-row gap-x-2" onClick={() => setToggleMenu(!toggleMenu)}>
                     <Icon className="text-orange" path={mdiHandshake} size={1} />
                     <h1>Sponsors</h1>
                 </Link>
