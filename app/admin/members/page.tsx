@@ -7,9 +7,25 @@ import { useState, useEffect, Fragment } from 'react';
 import AdminMemberList from '@components/AdminMemberList'
 import AdminMemberReq from '@components/AdminMemberReq'
 
+type Member = {
+  name: string;
+  year: string;
+  email: string;
+}
+
 const Members = () => {
     const [activeSelection, setActiveSelection] = useState(0);
-    
+    const [members, setMembers] = useState<Member[]>([]);
+
+    useEffect(() => {
+        const fetchMembers = async () => {
+            const response = await fetch('/api/getMembers');
+            const data = await response.json();
+            setMembers(data);
+        }
+
+        fetchMembers();
+    })
   return (
     <Fragment>
     <nav className={`flex flex-row items-center justify-center bg-shade-light z-10 w-full border-b-2 border-neutral-300 border-solid ${body.className}`}>
@@ -22,9 +38,11 @@ const Members = () => {
             <h1>Requests</h1>
         </div>
     </nav>
-    {activeSelection === 0 ?
-    <AdminMemberList></AdminMemberList> :
-    <AdminMemberReq></AdminMemberReq>}
+    {members.map((member, index) => (
+      activeSelection === 0 ?
+      <AdminMemberList key={index} name={member.name} year={member.year} /> :
+      <AdminMemberReq key={index} name={member.name} email={member.email} />
+    ))}
     </Fragment>
   )
 }
