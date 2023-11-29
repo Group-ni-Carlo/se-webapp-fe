@@ -71,9 +71,9 @@ const config: Config = {
       animation: {
         slideInFromLeft: 'slideInFromLeft 0.5s ease-out',
         slideInFromRight: 'slideInFromRight 0.5s ease-out'
-      },
+      }
     },
-    plugins: [],
-  }
+  },
+  plugins: [],
 }
 export default config
