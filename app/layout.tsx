@@ -13,7 +13,7 @@ type LayoutProps = {
 const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
-        <body className="bg-slate-200">
+        <body className="bg-neutral-50">
 
             <main className="app">
                 { children }

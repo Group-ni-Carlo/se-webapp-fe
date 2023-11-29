@@ -13,7 +13,7 @@ type LayoutProps = {
 const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
-        <body className="bg-whitesmoke">
+        <body className="bg-neutral-50">
             
             <main className="app">
                 <AdminNavBar />
