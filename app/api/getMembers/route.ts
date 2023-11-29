@@ -1,34 +1,22 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { Pool } from "pg";
+
+const pool = new Pool({
+  connectionString: `${process.env.BASE_URL}`,
+});
 
 export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
-    const data = 
-    [{
-        name: 'Anthony John Aparicio',
-        year: '2nd Year',
-        email: 'anthonyjohn.aparicio-22@cpu.edu.ph'
-    },
-    {
-        name: 'Jezerwel Grino',
-        year: '2nd Year',
-        email: 'jezerwel.grino-22@cpu.edu.ph'
-    },
-    {
-        name: 'Jed Matthew Mamosto',
-        year: '2nd Year',
-        email: 'jedmatthew.mamosto-20@cpu.edu.ph'
-    },
-    {
-        name: 'John Carlo Macoco',
-        year: '2nd Year',
-        email: 'johncarlo.macoco-09@cpu.edu.ph'
+  try {
+    const client = await pool.connect();
+    const selectMembers = `SELECT m.name, m.email, m.year FROM "Members" as m`;
+    const result = await client.query(selectMembers);
+    if (result.rows.length > 0) {
+      return new Response(JSON.stringify(result.rows), { status: 200 });
+    } else {
+      const data: [] = [];
+      return new Response(JSON.stringify(data), { status: 200 });
     }
-    ]
-    
-    try {
-        return new Response(JSON.stringify(data), { status: 200 });
-    }
-    catch (err) {
-        return new Response(`${err}`, { status: 500 });
-    }
-}
-    
+  } catch (err) {
+    return new Response(`${err}`, { status: 500 });
+  }
+};
