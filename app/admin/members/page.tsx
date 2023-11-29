@@ -22,7 +22,7 @@ const Members = () => {
             <h1>Requests</h1>
         </div>
     </nav>
-    {activeSelection === 1 ?
+    {activeSelection === 0 ?
     <AdminMemberList></AdminMemberList> :
     <AdminMemberReq></AdminMemberReq>}
     </Fragment>
